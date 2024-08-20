@@ -13,3 +13,5 @@ Search and Save News
     Run Process    python    news_search.py
     Copy Files    ${OUTPUT_DIR}/news_data.xlsx    ${ARTIFACTS_DIR}
     Copy Files    ${OUTPUT_DIR}/images    ${ARTIFACTS_DIR}/images
+
+Log    Files in ${OUTPUT_DIR}: ${/}${"\n".join(os.listdir(${OUTPUT_DIR}))}

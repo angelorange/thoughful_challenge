@@ -20,7 +20,3 @@ PYTHONPATH:
   - .
 ignoreFiles:
   - .gitignore
-# artifacts:
-#   - path: output/
-#     name: output
-#     type: directory
