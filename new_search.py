@@ -16,11 +16,16 @@ class NewsSearch:
     def __init__(self, base_url, excel_filename):
         self.base_url = base_url
         self.excel_filename = os.path.join('output', excel_filename)
-        self.driver = webdriver.Firefox()
-        self.wait = WebDriverWait(self.driver, 20)
         self.image_folder = os.path.join('output', 'images')
+        
+        # Ensure output directories exist
+        if not os.path.exists('output'):
+            os.makedirs('output')
         if not os.path.exists(self.image_folder):
             os.makedirs(self.image_folder)
+
+        self.driver = webdriver.Firefox()
+        self.wait = WebDriverWait(self.driver, 20)
 
     def search_news(self, search_phrase, months):
         self.search_phrase = search_phrase
@@ -162,6 +167,7 @@ class NewsSearch:
             img_path = os.path.join(self.image_folder, filename)
             with open(img_path, 'wb') as file:
                 file.write(response.content)
+            self.log(f"Image saved: {img_path}")
             return filename
         except Exception as e:
             self.log(f"Error downloading image: {e}")
@@ -169,8 +175,6 @@ class NewsSearch:
 
     def save_to_excel(self, news_data_list):
         df = pd.DataFrame(news_data_list)
-        if not os.path.exists('output'):
-            os.makedirs('output')
         df.to_excel(self.excel_filename, index=False)
         self.log(f"Data saved in Excel file: {self.excel_filename}")
 
