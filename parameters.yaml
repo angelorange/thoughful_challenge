@@ -1,3 +1,3 @@
-search_phrase: "example"
-news_category: "general"
-months: 1
+search_phrase: "Airplane crash"
+months: 3
+excel_filename: "news_data.xlsx"
