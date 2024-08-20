@@ -4,12 +4,12 @@ Library     Process
 
 
 *** Variables ***
-${OUTPUT_DIR}       output
-${ARTIFACTS_DIR}    /path/to/artifacts
+${OUTPUT_DIR}       /home/worker/instance/runs/2975ce28-976b-497b-8a3d-f8ac98b4b5a2/package/output
+${ARTIFACTS_DIR}    ${OUTPUT_DIR}
 
 
 *** Tasks ***
 Search and Save News
     Run Process    python    news_search.py
-    # Ensure that the output directory is copied to the artifacts directory
-    Copy Directory    ${OUTPUT_DIR}    ${ARTIFACTS_DIR}
+    Copy Files    ${OUTPUT_DIR}/news_data.xlsx    ${ARTIFACTS_DIR}
+    Copy Files    ${OUTPUT_DIR}/images    ${ARTIFACTS_DIR}/images
