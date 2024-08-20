@@ -12,7 +12,10 @@ environmentConfigs:
   - environment_darwin_amd64_freeze.yaml
   - conda.yaml
 
-# artifactsDir: output
+artifactsDir:
+  - path: output/
+    name: output
+    type: directory
 
 PATH:
   - .
@@ -20,8 +23,3 @@ PYTHONPATH:
   - .
 ignoreFiles:
   - .gitignore
-
-artifacts:
-  - path: output/
-    name: output
-    type: directory
